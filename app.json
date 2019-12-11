@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Kliento",
+    "slug": "kliento",
+    "description": "App for Surveys",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./app/assets/icon.png",
+    "splash": {
+      "image": "./app/assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#7f70e7"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "app/assets/*"
+    ],
+    "android": {
+      "package": "com.kimetrics.kliento"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kimetrics.kliento"
+    }
+  }
+}
