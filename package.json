@@ -8,12 +8,17 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
+    "apollo-link-http": "^1.5.16",
     "axios": "^0.19.0",
     "expo": "^35.0.0",
     "expo-asset": "^7.0.0",
     "expo-constants": "^7.0.0",
     "expo-font": "^7.0.0",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "install": "^0.13.0",
     "native-base": "^2.13.4",
     "querystring": "^0.2.0",
     "react": "16.8.3",
