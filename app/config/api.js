@@ -1,5 +1,5 @@
 export default {
-  apiBaseUrl: 'https://api.kliento.mx/',
+  apiBaseUrl: 'http://auth.kliento.mx/',
   signin: 'auth/jwt/create/',
   signup: 'https://auth.livein.com.mx/auth/users/',
   authBaseUrl: 'http://auth.kliento.mx/',

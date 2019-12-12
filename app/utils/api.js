@@ -6,17 +6,17 @@ import apiConfig from '../config/api';
 
 import pathToRegExp from 'path-to-regexp';
 import { Platform } from 'react-native';
-import { ApolloClient } from 'apollo-client';
+// import { ApolloClient } from 'apollo-client';
 
 axios.interceptors.request.use((config) => {
   // console.log(`Request [${ config.method }] ${ config.url }`, config);
   return config;
 });
 
-const client = new ApolloClient({
-  uri: 'http://api.kliento.mx/v1/graphql',
-  headers: { 'x-hasura-admin-secret': 'admin' }
-})
+// const client = new ApolloClient({
+//   uri: 'http://api.kliento.mx/v1/graphql',
+//   headers: { 'x-hasura-admin-secret': 'admin' }
+// })
 
 const execute = async (path, method = 'GET', { params = {} , queries = {}, payloads = {}, headers = {} } = {}) => {
   const token = await storage.get('token');

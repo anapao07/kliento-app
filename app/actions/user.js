@@ -3,18 +3,29 @@ import url from '../config/api';
 import apiConfig from '../config/api';
 import storage from '../utils/storage';
 import { ActionTypes, Strings } from '../constants/';
+import { NavigationActions } from 'react-navigation';
 import { getLanguage } from '../utils/common';
+import Screens from "../constants/Screens";
 
 export const signin = payloads => dispatch => {
   dispatch({ type: ActionTypes.LOADING, isLoading: true });
+  console.log('PAYLOADS', payloads)
   return axios.post(url.signin,  {payloads: payloads})
   .then(res => {
     // console.log("res", res.data);
     dispatch({ type: ActionTypes.LOADING, isLoading: false });
       if(res.status == 200){
-        if(res.data.status==200){
-          dispatch({ type: ActionTypes.SIGNIN, data: res.data.data.user });
+        console.log('OK', res)
+        if(res.request.status==200){
+          console.log('DOJAOSDJAOSDJAOSD')
+          // this.props.navigation.navigate(Screens.SignInStack.route)
+          // storage.set('access_token', res.data.access);
+          // storage.set('refresh_token', res.data.refresh);
+          // console.log('EL TOKEN', storage.get('access_token'));
+          dispatch({ type: ActionTypes.SIGNIN, data: res.status });
+          dispatch(NavigationActions.navigate({routeName: Screens.Home.route}))
         }
+      console.log('HERE !');
         return res.data
       } else {
         return res
