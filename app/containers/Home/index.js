@@ -24,8 +24,9 @@ import gql from 'graphql-tag' ;
 const GET_SURVEY = gql`
 query MyQuery {
   data_survey {
-    survey
-    user
+    name
+    id
+    content
   }
 }
 `;
