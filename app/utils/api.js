@@ -6,7 +6,6 @@ import apiConfig from '../config/api';
 
 import pathToRegExp from 'path-to-regexp';
 import { Platform } from 'react-native';
-// import { ApolloClient } from 'apollo-client';
 
 axios.interceptors.request.use((config) => {
   // console.log(`Request [${ config.method }] ${ config.url }`, config);
