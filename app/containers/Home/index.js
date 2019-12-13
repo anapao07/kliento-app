@@ -23,7 +23,7 @@ import gql from 'graphql-tag' ;
 
 const GET_SURVEY = gql`
 query MyQuery {
-  data_assignment {
+  data_survey {
     survey
     user
   }
