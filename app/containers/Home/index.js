@@ -22,13 +22,12 @@ import gql from 'graphql-tag' ;
 
 
 const GET_SURVEY = gql`
-  query GetSurvey {
-    survey {
-      id
-      name
-      content
-    }
+query MyQuery {
+  data_assignment {
+    survey
+    user
   }
+}
 `;
 
 
@@ -40,13 +39,12 @@ const AllSurvey = () => (
       if (error) return <Text>{error.message}</Text>
 
       return (
-        <div>
-        {data.survey &&
-          data.survey.map(inv => (
+        <>
+          {/*<Text>{JSON.stringify(data)}</Text>*/}
+        {data.data_survey.map(inv => (
           <Text>{inv.name}</Text>
           ))}
-
-          </div>
+        </>
       );
     }}
   </Query>

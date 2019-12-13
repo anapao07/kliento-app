@@ -18,7 +18,7 @@ axios.interceptors.request.use((config) => {
 // })
 
 const execute = async (path, method = 'GET', { params = {} , queries = {}, payloads = {}, headers = {} } = {}) => {
-  const token = await storage.get('token');
+  const token = await storage.get('access_token');
   const compiler = pathToRegExp.compile(path);
   // SEND LOGIN TOKEN if LOGIN
   const notification_token = await storage.get('notification_token');

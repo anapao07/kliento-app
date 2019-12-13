@@ -24,6 +24,7 @@ import {ApolloProvider} from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import storage from "./app/utils/storage";
 
 const httpLink = createHttpLink({
   uri: 'http://api.kliento.mx/v1/graphql',
@@ -31,12 +32,12 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('token');
+  const token = storage.get('access_token');
   // return the headers to the context so httpLink can read them
   return {
     headers: {
-      'x-hasura-admin-secret': 'admin' 
-      // authorization: token ? `Bearer ${token}` : "",
+      'x-hasura-admin-secret': 'admin',
+      authorization: token ? `Bearer ${token}` : "",
     }
   }
 });
