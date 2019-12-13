@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, ImageBackground, Image, FlatList} from 'react-native'
+import { StyleSheet, View, ImageBackground, Image, FlatList,ActivityIndicator } from 'react-native'
 import _ from 'lodash'; 
 import { Layout, Colors, Screens } from '../../constants';
 import { Logo, Svgicon, Headers, Block, Ripple } from '../../components';
 import imgs from '../../assets/images';
+import { ListItem, SearchBar } from 'react-native-elements';
 import {
   Container,
   Content,
@@ -40,12 +41,26 @@ const AllSurvey = () => (
       if (error) return <Text>{error.message}</Text>
 
       return (
-        <>
-          {/*<Text>{JSON.stringify(data)}</Text>*/}
-        {data.data_survey.map(inv => (
-          <Text>{inv.name}</Text>
-          ))}
-        </>
+
+        <View style={{ flex: 1 }}>
+        <FlatList
+          data={data.data_survey}
+          renderItem={({ item }) => (
+            <ListItem 
+              title={`${item.name}`}
+              bottomDivider={true}
+              badge={{ value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: -7 } }}
+            
+            />
+          )}
+        />
+      </View>
+        // <>
+        //   {/*<Text>{JSON.stringify(data)}</Text>*/}
+        // {data.data_survey.map(inv => (
+        //   <Text>{inv.name}</Text>
+        //   ))}
+        // </>
       );
     }}
   </Query>
