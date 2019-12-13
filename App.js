@@ -19,6 +19,39 @@ import ReduxNavigation from './app/navigation/ReduxNavigation';
 
 // Imports: Redux Persist Persister
 import { store, persistor } from './app/store/store';
+import { ApolloClient } from 'apollo-client'
+import {ApolloProvider} from 'react-apollo';
+import { createHttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+const httpLink = createHttpLink({
+  uri: 'http://api.kliento.mx/v1/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      'x-hasura-admin-secret': 'admin' 
+      // authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
+
+
+
+// const client = new ApolloClient({
+//   uri: 'http://api.kliento.mx/v1/graphql',
+//   headers: { 'x-hasura-admin-secret': 'admin' }
+// })
 
 
 function cacheImages(images) {
@@ -67,7 +100,10 @@ export default class App extends React.Component {
       );
     }
     return (
-      // Redux: Global Store
+
+      <ApolloProvider client ={client}>
+
+         {/* // Redux: Global Store */}
       <Provider store={store}>
         <PersistGate 
           loading={<AppLoading />}
@@ -80,6 +116,7 @@ export default class App extends React.Component {
           </StyleProvider>
         </PersistGate>
       </Provider>
+      </ApolloProvider>   
     );
   }
 };

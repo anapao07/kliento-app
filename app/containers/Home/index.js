@@ -17,6 +17,41 @@ import { connect } from "react-redux";
 import * as userActions from "../../actions/user";
 import appStyles from '../../theme/appStyles';
 import styles from './styles';
+import {Query} from 'react-apollo';
+import gql from 'graphql-tag' ;
+
+
+const GET_SURVEY = gql`
+  query GetSurvey {
+    survey {
+      id
+      name
+      content
+    }
+  }
+`;
+
+
+
+const AllSurvey = () => (
+  <Query query={GET_SURVEY}>
+    {({ loading, error, data }) => {
+      if (loading) return <Text>Loading</Text>
+      if (error) return <Text>{error.message}</Text>
+
+      return (
+        <div>
+        {data.survey &&
+          data.survey.map(inv => (
+          <Text>{inv.name}</Text>
+          ))}
+
+          </div>
+      );
+    }}
+  </Query>
+);
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +59,14 @@ class Home extends React.Component {
       item:{}
     }
   }
+
+
+
+
+
+
+  
+
   // renderSurveys = ({item}) =>{
   //   const {language, languageCode, accounts} = this.props;
   //   let color = item.results ? Theme.colors.green : Theme.colors.black;
@@ -75,18 +118,7 @@ class Home extends React.Component {
             style={ { width: Layout.window.width, height: Layout.window.height }}>
           <Headers {...this.props} />
           <Content enableOnAndroid style={appStyles.content}>
-            <View style={appStyles.contentBg}>
-            {/* <Block>
-              <FlatList
-              contentContainerStyle={{ paddingBottom: Theme.sizes.indent3x}}
-              data={this.props.currSurveys}
-              numColumns={1}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={this.renderCurrentSurveys}
-              ListEmptyComponent={this.noItemDisplay}
-              />
-            </Block> */}
-            </View>
+          <AllSurvey>  </AllSurvey>
           </Content>
          </ImageBackground>
       </Container>
