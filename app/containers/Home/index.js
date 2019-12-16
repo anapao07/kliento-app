@@ -34,25 +34,30 @@ query MyQuery {
 
 
 
-const AllSurvey = () => (
+const AllSurvey = ({navigation}) => {
+  return(
   <Query query={GET_SURVEY}>
     {({ loading, error, data }) => {
       if (loading) return <Text>Loading</Text>
       if (error) return <Text>{error.message}</Text>
-
+     
       return (
 
         <View style={{ flex: 1 }}>
         <FlatList
           data={data.data_survey}
           renderItem={({ item }) => (
+            
             <ListItem 
+             
               title={`${item.name}`}
               bottomDivider={true}
               badge={{ value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: -7 } }}
-            
+              // onPress={() => console.warn("event -> onPress")}
+              onPress={() => { navigation.navigate(Screens.Settings.route) }}
             />
           )}
+          
         />
       </View>
         // <>
@@ -64,14 +69,18 @@ const AllSurvey = () => (
       );
     }}
   </Query>
-);
+  )
+  
+};
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       item:{}
+      
     }
+    
   }
 
 
@@ -132,7 +141,7 @@ class Home extends React.Component {
             style={ { width: Layout.window.width, height: Layout.window.height }}>
           <Headers {...this.props} />
           <Content enableOnAndroid style={appStyles.content}>
-          <AllSurvey>  </AllSurvey>
+          <AllSurvey {...this.props}>  </AllSurvey>
           </Content>
          </ImageBackground>
       </Container>
