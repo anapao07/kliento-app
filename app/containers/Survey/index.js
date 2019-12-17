@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { Layout, Colors, Screens } from '../../constants';
 import { connect } from "react-redux";
+import {
+    Text,
+} from "native-base";
+import * as userActions from "../../actions/user";
 
 
 
