@@ -54,7 +54,7 @@ const AllSurvey = ({navigation}) => {
               bottomDivider={true}
               badge={{ value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: -7 } }}
               // onPress={() => console.warn("event -> onPress")}
-              onPress={() => { navigation.navigate(Screens.Settings.route) }}
+              onPress={() => { navigation.navigate(Screens.Survey.route) }}
             />
           )}
           
