@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { Layout, Colors, Screens } from '../../constants';
 import { connect } from "react-redux";
+
+ 
 import {
     Text,
 } from "native-base";
+
+import {WebView} from 'react-native';
 import * as userActions from "../../actions/user";
+let htmlview = require('./index.html');
 
 
 
@@ -20,9 +25,18 @@ class Survey extends React.Component {
 
 
    render(){
+    
+    console.log("entro1");
       return (
-      <Text>HOLA</Text>
-       
+        
+         <WebView
+         
+        source={{html: require('./foobar.js')()}}
+          // source={htmlview}
+        //  source={require('./index.html')}
+        //  source={{html,'<h1>Hola Mundo</h1>'}}
+         style={{marginTop: 50}}
+       />
       );
     }
 
