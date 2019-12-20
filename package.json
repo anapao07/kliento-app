@@ -30,10 +30,12 @@
     "react-native-app-intro-slider": "^3.0.0",
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "~1.3.0",
+    "react-native-htmlview": "^0.15.0",
     "react-native-modal": "^11.3.1",
     "react-native-svg": "^9.12.0",
     "react-native-svg-icon": "^0.8.1",
     "react-native-web": "^0.11.7",
+    "react-native-webview-bridge": "https://github.com/alinz/react-native-webview-bridge",
     "react-navigation": "^3.12.0",
     "react-navigation-redux-helpers": "^3.0.2",
     "react-redux": "^7.1.0",
@@ -41,7 +43,10 @@
     "redux-form": "^8.2.6",
     "redux-form-validators": "^3.3.2",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "survey-creator": "latest",
+    "survey-react": "^1.1.17",
+    "surveyjs-widgets": "latest"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1",
