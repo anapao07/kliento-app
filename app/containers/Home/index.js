@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, View, ImageBackground, Image, FlatList,ActivityIndicator } from 'react-native'
-import _ from 'lodash'; 
+import { StyleSheet, View, ImageBackground, Image, FlatList, ActivityIndicator } from 'react-native'
+import _ from 'lodash';
 import { Layout, Colors, Screens } from '../../constants';
 import { Logo, Svgicon, Headers, Block, Ripple } from '../../components';
 import imgs from '../../assets/images';
@@ -18,8 +18,8 @@ import { connect } from "react-redux";
 import * as userActions from "../../actions/user";
 import appStyles from '../../theme/appStyles';
 import styles from './styles';
-import {Query} from 'react-apollo';
-import gql from 'graphql-tag' ;
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
 
 const GET_SURVEY = gql`
@@ -34,53 +34,62 @@ query MyQuery {
 
 
 
-const AllSurvey = ({navigation}) => {
-  return(
-  <Query query={GET_SURVEY}>
-    {({ loading, error, data }) => {
-      if (loading) return <Text>Loading</Text>
-      if (error) return <Text>{error.message}</Text>
-     
-      return (
+const AllSurvey = ({ navigation }) => {
+  return (
+    <Query query={GET_SURVEY}>
+      {({ loading, error, data }) => {
+        if (loading) return <Text>Loading</Text>
+        if (error) return <Text>{error.message}</Text>
 
-        <View style={{ flex: 1 }}>
-        <FlatList
-          data={data.data_survey}
-          renderItem={({ item }) => (
-            
-            <ListItem 
-             
-              title={`${item.name}`}
-              bottomDivider={true}
-              badge={{ value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: -7 } }}
-              // onPress={() => console.warn("event -> onPress")}
-              onPress={() => { navigation.navigate(Screens.Survey.route) }}
+        return (
+
+          <View style={{ flex: 1 }}>
+            <FlatList
+              data={data.data_survey}
+              renderItem={({ item }) => (
+
+
+                <ListItem
+
+                  title={`${item.name}`}
+
+                  bottomDivider={true}
+                  badge={{ value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: -7 } }}
+                  // onPress={() => console.warn("event -> onPress")}
+                  onPress={() => { navigation.navigate(Screens.Survey.route , {id:item.id}) }}
+
+                  />
+                  
+
+              )
+              
+              }
+
             />
-          )}
-          
-        />
-      </View>
-        // <>
-        //   {/*<Text>{JSON.stringify(data)}</Text>*/}
-        // {data.data_survey.map(inv => (
-        //   <Text>{inv.name}</Text>
-        //   ))}
-        // </>
-      );
-    }}
-  </Query>
+
+
+          </View>
+          // <>
+          //   {/*<Text>{JSON.stringify(data)}</Text>*/}
+          // {data.data_survey.map(inv => (
+          //   <Text>{inv.name}</Text>
+          //   ))}
+          // </>
+        );
+      }}
+    </Query>
   )
-  
+
 };
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item:{}
-      
+      item: {}
+
     }
-    
+
   }
 
 
@@ -88,7 +97,7 @@ class Home extends React.Component {
 
 
 
-  
+
 
   // renderSurveys = ({item}) =>{
   //   const {language, languageCode, accounts} = this.props;
@@ -127,25 +136,25 @@ class Home extends React.Component {
   // }
 
   noItemDisplay = () => {
-    const {language} = this.props;
+    const { language } = this.props;
     return (
-        <Block column center middle style={{padding:Theme.sizes.indent}}><Text gray>{language.noSurveys}</Text></Block>
-      );
+      <Block column center middle style={{ padding: Theme.sizes.indent }}><Text gray>{language.noSurveys}</Text></Block>
+    );
   };
-  
-  render(){
+
+  render() {
     return (
       <Container style={appStyles.container}>
-        <ImageBackground 
-            source={imgs.bg} 
-            style={ { width: Layout.window.width, height: Layout.window.height }}>
+        <ImageBackground
+          source={imgs.bg}
+          style={{ width: Layout.window.width, height: Layout.window.height }}>
           <Headers {...this.props} />
           <Content enableOnAndroid style={appStyles.content}>
-          <AllSurvey {...this.props}>  </AllSurvey>
+            <AllSurvey {...this.props}>  </AllSurvey>
           </Content>
-         </ImageBackground>
+        </ImageBackground>
       </Container>
-     
+
     );
   }
 }
@@ -157,8 +166,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      logout: () => dispatch(userActions.logoutUser()),
-   };
+    logout: () => dispatch(userActions.logoutUser()),
+  };
 };
 
 // Exports
