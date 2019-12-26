@@ -79,7 +79,7 @@ let ids = this.props.navigation.state.params.id;
 let VIEW = require('../../assets/index.html');
 
 let link= 'http://encuestas.kliento.mx.s3-website-us-east-1.amazonaws.com/#/myview/'+ids;
-
+let yourAlert = 'alert("hello")';
 console.log("URL-->",link);
 
 return (
@@ -89,6 +89,7 @@ return (
     
 
       source={{uri:link }}
+      injectedJavaScript={yourAlert}
          // source={VIEW}
       // value={htmlContent}
         // source={{html: require('./content.js')()}}
