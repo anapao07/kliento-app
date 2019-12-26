@@ -7,7 +7,7 @@ This project was bootstrapped with <a href="https://expo.io/">Expo</a>.
 Clone or download the repository and install the dependencies
 
 <pre> # Clone the repository
-git clone https://github.com/erikriver/kliento-mobile.git
+git clone https://github.com/anapao07/kliento-app.git
 
 # Go to kliento-mobile
 cd kliento-mobile
