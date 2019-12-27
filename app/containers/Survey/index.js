@@ -21,8 +21,11 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import storage from "../../utils/storage";
 
+
+
+// http://api.kliento.mx/v1/graphql
 const httpLink = createHttpLink({
-  uri: 'http://api.kliento.mx/v1/graphql',
+  uri: 'https://api.kliento.mx/v1/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -76,9 +79,9 @@ let ids = this.props.navigation.state.params.id;
   </html>`;
     const  runFirst =`document.body.style.backgroundcolor = 'red'`;
     console.log("entro1");
-let VIEW = require('../../assets/index.html');
+// let VIEW = require('../../assets/index.html');
 
-let link= 'http://encuestas.kliento.mx.s3-website-us-east-1.amazonaws.com/#/myview/'+ids;
+let link= 'https://encuestas.kliento.mx/#/myview/'+ids;
 let yourAlert = 'alert("hello")';
 console.log("URL-->",link);
 
