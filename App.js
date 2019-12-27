@@ -27,7 +27,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import storage from "./app/utils/storage";
 
 const httpLink = createHttpLink({
-  uri: 'http://api.kliento.mx/v1/graphql',
+  uri: 'https://api.kliento.mx/v1/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

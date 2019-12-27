@@ -1,8 +1,8 @@
 export default {
-  apiBaseUrl: 'http://auth.kliento.mx/',
-  signin: 'auth/jwt/create/',
+  apiBaseUrl: 'https://auth.kliento.mx/',
+  signin: 'https://auth.kliento.mx/auth/jwt/create/',
   signup: 'https://auth.livein.com.mx/auth/users/',
-  authBaseUrl: 'http://auth.kliento.mx/',
-  storageBaseUrl: 'http://storage.kliento.mx',
-  apiGraphql: 'http://api.kliento.mx/v1/graphql',
+  authBaseUrl: 'https://auth.kliento.mx/',
+  storageBaseUrl: 'https://storage.kliento.mx',
+  apiGraphql: 'https://api.kliento.mx/v1/graphql',
 }
